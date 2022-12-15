@@ -1,10 +1,14 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import indexRouter from './routes/index.js';
+import quotesRouter from './routes/quotes.js';
 
-var indexRouter = require('./routes/index');
-var quotesRouter = require('./routes/quotes');
+//Get directory path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 var app = express();
 
@@ -21,4 +25,4 @@ app.use(function (req, res) {
     res.status(404).end('You seem lost');
 });
 
-module.exports = app;
+export default app;

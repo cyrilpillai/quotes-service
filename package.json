@@ -5,9 +5,10 @@
   "private": true,
   "author": "Cyril Pillai",
   "license": "Apache-2.0",
+  "type": "module",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "node ./bin/www.js",
+    "dev": "nodemon ./bin/www.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
