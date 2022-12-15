@@ -1,0 +1,22 @@
+{
+  "name": "quotes-service",
+  "description": "REST service for Quotes",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Cyril Pillai",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "debug": "^2.6.9",
+    "express": "^4.16.1",
+    "morgan": "^1.9.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
