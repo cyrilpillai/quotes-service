@@ -1,16 +1,16 @@
 import express from 'express';
-import * as quotesController from '../controllers/quotes.js';
+import * as controller from '../controllers/quotes.js';
 
 var router = express.Router();
 
-router.get('/', quotesController.getAllQuotes);
+router.get('/', controller.getAllQuotes);
 
-router.get('/:id', quotesController.getQuote);
+router.get('/:id', controller.getQuote);
 
-router.post('/', quotesController.createQuote);
+router.post('/', controller.createQuote);
 
-router.put('/:id', quotesController.updateQuote);
+router.put('/:id', controller.updateQuote);
 
-router.delete('/:id', quotesController.deleteQuote);
+router.delete('/:id', controller.deleteQuote);
 
 export default router;
