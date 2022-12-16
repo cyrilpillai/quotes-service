@@ -7,6 +7,10 @@
 import app from '../app.js';
 import Debug from 'debug';
 import http from 'http';
+import dotenv from 'dotenv';
+
+//Load env variables
+dotenv.config();
 
 var debug = Debug('quotes-service:server');
 
