@@ -1,5 +1,5 @@
 import express from 'express';
-import * as controller from '../controllers/quotes.js';
+import * as controller from '../controllers/quotes_controller.js';
 
 var router = express.Router();
 

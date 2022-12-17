@@ -11,6 +11,8 @@
     "dev": "nodemon ./bin/www.js"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.231.0",
+    "@aws-sdk/lib-dynamodb": "^3.231.0",
     "cookie-parser": "^1.4.4",
     "debug": "^2.6.9",
     "dotenv": "^16.0.3",

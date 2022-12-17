@@ -1,5 +1,5 @@
-import validator from '../validators/quotes.js';
-import * as service from '../services/quotes.js';
+import validator from '../validators/quotes_validator.js';
+import * as service from '../services/quotes_service.js';
 
 export async function getAllQuotes(req, res) {
     const quotes = await service.getAllQuotes();

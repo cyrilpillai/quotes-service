@@ -3,8 +3,8 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import indexRouter from './routes/index.js';
-import quotesRouter from './routes/quotes.js';
+import indexRouter from './routes/index_routes.js';
+import quotesRouter from './routes/quotes_routes.js';
 
 //Get directory path
 const __filename = fileURLToPath(import.meta.url);

@@ -1,3 +1,4 @@
+import * as data_source from '../data/quotes_data_source.js';
 
 let quotes = [
     {
@@ -18,7 +19,8 @@ let quotes = [
 ]
 
 export async function getAllQuotes() {
-    return quotes;
+    let data = await data_source.getAllQuotes();
+    return data.Items;
 }
 
 export async function getQuote(id) {
