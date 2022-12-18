@@ -8,7 +8,11 @@ export async function getAllQuotes(req, res) {
 
 export async function getQuote(req, res) {
     const quote = await service.getQuote(req.params.id);
-    res.send(quote);
+    if (quote) {
+        res.send(quote);
+    } else {
+        res.status(404).send();
+    }
 }
 
 export async function createQuote(req, res) {
@@ -37,6 +41,10 @@ export async function updateQuote(req, res) {
 
 export async function deleteQuote(req, res) {
     const quote = await service.deleteQuote(req.params.id);
-    res.send(quote);
+    if (quote) {
+        res.send(quote);
+    } else {
+        res.status(404).send();
+    }
 }
 

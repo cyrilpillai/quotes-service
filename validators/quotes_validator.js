@@ -1,10 +1,12 @@
 import Joi from 'joi';
 
+const titleLabel = 'title';
 const descriptionLabel = 'description';
 const authorLabel = 'author';
 
 const quoteBodySchema = Joi.object({
-    description: Joi.string().required().label(descriptionLabel),
+    title: Joi.string().required().label(titleLabel),
+    description: Joi.string().label(descriptionLabel).allow(''),
     author: Joi.string().required().label(authorLabel),
 });
 
@@ -20,10 +22,10 @@ export default function validateQuoteSchema(value) {
         return result;
     } else {
         switch (error.details[0].context.label) {
-            case descriptionLabel:
-                return createErrorBody('1001', 'description is required');
+            case titleLabel:
+                return createErrorBody('1001', 'title is required');
             case authorLabel:
-                return createErrorBody('1002', 'author is required');
+                return createErrorBody('1003', 'author is required');
             default:
                 return createErrorBody('5000', 'unknown error');
         }
