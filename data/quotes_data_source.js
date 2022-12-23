@@ -88,7 +88,7 @@ export async function updateQuote(id, quote) {
         } else {
             updateExpression += ' remove description';
         }
-        
+
         const command = new UpdateCommand({
             ...tablNameInput,
             ...keyInput(id),
@@ -100,9 +100,9 @@ export async function updateQuote(id, quote) {
         });
 
         const result = await ddbDocClient.send(command);
-        return result.Attributes;
+        return { success: true, ...result.Attributes };
     } catch (error) {
-        if(error.name === 'ConditionalCheckFailedException') {
+        if (error.name === 'ConditionalCheckFailedException') {
             return createErrorBody(4001, 'Quote not found');
         } else {
             return createErrorBody(5000, 'unknown error');
