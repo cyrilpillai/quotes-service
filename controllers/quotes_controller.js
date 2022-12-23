@@ -32,7 +32,16 @@ export async function updateQuote(req, res) {
     if (validation.success === true) {
         delete validation.success;
         const newQuote = await service.updateQuote(req.params.id, validation);
-        res.send(newQuote);
+        if(newQuote.success === true) {
+            res.send(newQuote);
+        } else {
+            if(newQuote.code === 4001) {
+                delete newQuote.success;
+                res.status(404).send(newQuote);
+            } else {
+                res.status(500).send('unknown error');
+            } 
+        }
     } else {
         delete validation.success;
         res.status(400).send(validation);

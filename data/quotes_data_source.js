@@ -78,6 +78,9 @@ export async function updateQuote(id, quote) {
             ':a': quote.author,
             ':u': currentTimestamp(),
         };
+        let expressionAttributeNames = {
+            '#id': 'uuid',
+        };
 
         if (quote.description) {
             updateExpression += ' ,description = :d';
@@ -89,15 +92,21 @@ export async function updateQuote(id, quote) {
         const command = new UpdateCommand({
             ...tablNameInput,
             ...keyInput(id),
+            ConditionExpression: 'attribute_exists(#id)',
             UpdateExpression: updateExpression,
             ExpressionAttributeValues: expressionAttributeValues,
+            ExpressionAttributeNames: expressionAttributeNames,
             ReturnValues: 'ALL_NEW'
         });
 
         const result = await ddbDocClient.send(command);
         return result.Attributes;
     } catch (error) {
-        console.error(`Update quote failed: ${error}`);
+        if(error.name === 'ConditionalCheckFailedException') {
+            return createErrorBody(4001, 'Quote not found');
+        } else {
+            return createErrorBody(5000, 'unknown error');
+        }
     }
 }
 
@@ -113,4 +122,8 @@ export async function deleteQuote(id) {
     } catch (error) {
         console.log(`Delete quote failed: ${error}`);
     }
+}
+
+function createErrorBody(code, description) {
+    return { success: false, code: code, description: description };
 }

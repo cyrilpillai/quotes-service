@@ -32,11 +32,11 @@ export default function validateQuoteSchema(value) {
         const reason = error.details[0];
         switch (reason.context.label) {
             case titleLabel:
-                return createErrorBody('1001', reason.message);
+                return createErrorBody(1001, reason.message);
             case authorLabel:
-                return createErrorBody('1002', reason.message);
+                return createErrorBody(1002, reason.message);
             default:
-                return createErrorBody('5000', 'unknown error');
+                return createErrorBody(5000, 'unknown error');
         }
     }
 }
