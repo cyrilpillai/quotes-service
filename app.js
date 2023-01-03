@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import path from 'path';
@@ -14,6 +15,14 @@ const __dirname = path.dirname(__filename);
 var app = express();
 
 app.use(cors());
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100,
+	standardHeaders: true,
+	legacyHeaders: false,
+})
+app.use(limiter);
 
 app.use(logger('dev'));
 app.use(express.json());
