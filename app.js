@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import path from 'path';
@@ -11,6 +12,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 var app = express();
+
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
