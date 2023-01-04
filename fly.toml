@@ -1,4 +1,4 @@
-# fly.toml file generated for quotes-service on 2022-12-18T12:37:36+05:30
+# fly.toml file generated for quotes-service on 2023-01-04T20:58:58+05:30
 
 app = "quotes-service"
 kill_signal = "SIGINT"
